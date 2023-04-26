@@ -1,6 +1,5 @@
 package uz.edek.Dekanat.service.withoutDto.Impl;
 
-
 import org.hashids.Hashids;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -68,7 +67,7 @@ public class FileStorageServiceImpl implements FileStorageService {
             multiFile.transferTo(file);
             return fileStorage.getHashId();
         }catch(IOException e){
-                return null;
+            return null;
         }
     }
     @Override

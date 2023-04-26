@@ -32,7 +32,7 @@ public class DekanatApplication implements ApplicationRunner {
 			kafedraService.create(ka);
 		}
 
-		if(kafedraService.getById(1L) == null) {
+		if(oqituvchiService.getById(1L) == null) {
 			Oqituvchi oqituvchi = new Oqituvchi();
 			oqituvchi.setIsm("Norxol");
 			oqituvchi.setFamiliya("Eshqorayeva");
