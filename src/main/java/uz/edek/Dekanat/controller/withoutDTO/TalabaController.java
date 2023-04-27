@@ -1,17 +1,23 @@
 package uz.edek.Dekanat.controller.withoutDTO;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import uz.edek.Dekanat.entity.Talaba;
 import uz.edek.Dekanat.service.withoutDto.CommonService;
+import uz.edek.Dekanat.service.withoutDto.TalabaService;
 
-@CrossOrigin(value = "*",maxAge = 3600)
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping("/api/talaba")
 public class TalabaController extends AbstractController<Talaba>{
+    @Autowired
+    TalabaService talabaService;
     public TalabaController(CommonService<Talaba> service) {
         super(service);
     }
-
+    @GetMapping("/byHemisId/{id}")
+    public ResponseEntity<?> getByHemisId(@PathVariable String id){
+        return ResponseEntity.ok(talabaService.getByHemisId(id));
+    }
 }

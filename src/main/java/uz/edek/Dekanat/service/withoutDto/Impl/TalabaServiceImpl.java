@@ -51,4 +51,8 @@ public class TalabaServiceImpl  implements TalabaService {
     public List<Talaba> getAllList() {
         return talabaRepository.findAllByOrderByIdDesc();
     }
+    @Override
+    public Talaba getByHemisId(String id) {
+        return talabaRepository.findByHemisId(id);
+    }
 }
