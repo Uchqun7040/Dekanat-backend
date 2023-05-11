@@ -16,7 +16,6 @@ import uz.edek.Dekanat.service.withoutDto.FileStorageService;
 import java.io.IOException;
 import java.net.URLEncoder;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("api/file")
 public class FileStorageController {

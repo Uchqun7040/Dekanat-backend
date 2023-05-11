@@ -47,7 +47,7 @@ public abstract class AbstractService<ENTITY extends DistributedEntity> implemen
     @Override
     public ENTITY update(ENTITY entity) {
 //        if(!entity.isNewEntity()){
-            entity.setCreated(LocalDateTime.now());
+//            entity.setCreated(LocalDateTime.now());
 //            entity.setModified(LocalDateTime.now());
             someChangesForUpdate(entity);
             return repository.save(entity);

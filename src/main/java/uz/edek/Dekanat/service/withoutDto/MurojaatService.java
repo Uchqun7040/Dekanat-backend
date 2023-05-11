@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface MurojaatService extends CommonService<Murojaat> {
     List<Murojaat> getAllByTalabaId(Long talabaId);
+    List<Murojaat> getAllByOqituvchiId(Long oqituvchiId);
 }

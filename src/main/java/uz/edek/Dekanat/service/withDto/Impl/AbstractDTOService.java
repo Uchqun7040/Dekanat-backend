@@ -12,6 +12,7 @@ import uz.edek.Dekanat.repository.DistributedRepository;
 import uz.edek.Dekanat.service.withDto.CommonServiceDto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public abstract class AbstractDTOService<ENTITY extends DistributedEntity, DTO extends BaseDTO> implements CommonServiceDto<ENTITY,DTO> {
     
@@ -33,7 +34,7 @@ public abstract class AbstractDTOService<ENTITY extends DistributedEntity, DTO e
             return Page.empty();
         }
 
-        return converter.convertList(entity);
+        return converter.convertPage(entity);
     }
 
     @Override
@@ -66,7 +67,7 @@ public abstract class AbstractDTOService<ENTITY extends DistributedEntity, DTO e
     @Override
     public DTO update(ENTITY entity) {
 //        if(!entity.isNewEntity()){
-            entity.setCreated(LocalDateTime.now());
+//            entity.setCreated(LocalDateTime.now());
 //            entity.setModified(LocalDateTime.now());
             someChangesForUpdate(entity);
             repository.save(entity);
@@ -103,5 +104,10 @@ public abstract class AbstractDTOService<ENTITY extends DistributedEntity, DTO e
 
     private ENTITY findEntityById(Long id) {
         return repository.findById(id).orElse(null);
+    }
+    @Override
+    public List<DTO> getAllList() {
+        List<ENTITY> entity = repository.findAllByOrderByIdDesc();
+        return converter.convertList(entity);
     }
 }

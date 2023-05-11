@@ -11,4 +11,5 @@ import java.util.List;
 @Transactional
 public interface MurojaatRepository extends DistributedRepository<Murojaat>{
     List<Murojaat> findAllByTalabaIdOrderByIdDesc(Long id);
+    List<Murojaat> findAllByOqituvchiIdOrderByIdDesc(Long id);
 }

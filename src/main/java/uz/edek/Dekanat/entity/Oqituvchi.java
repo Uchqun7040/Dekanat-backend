@@ -1,72 +1,38 @@
 package uz.edek.Dekanat.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import lombok.Data;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
+@Data
 public class Oqituvchi extends DistributedEntity{
     private String ism;
+
     private String familiya;
+
     private String tel;
-    private Lavozim lavozim;
+
+    @ElementCollection(targetClass = Lavozim.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "oqituvchi_lavozim",
+            joinColumns = @JoinColumn(name = "oqituvchi_id"))
+    @Column(name = "lavozim_id")
+    private Set<Lavozim> lavozim;
+
     @ManyToOne
     private Kafedra kafedra;
+
     private String ilmiyDaraja;
+
     private String mutaxasislik;
 
-    public String getIsm() {
-        return ism;
-    }
+    @Size(max = 30, min = 6)
+    @Column(unique = true, nullable = false)
+    private String login;
 
-    public void setIsm(String ism) {
-        this.ism = ism;
-    }
-
-    public String getFamiliya() {
-        return familiya;
-    }
-
-    public void setFamiliya(String familiya) {
-        this.familiya = familiya;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public Lavozim getLavozim() {
-        return lavozim;
-    }
-
-    public void setLavozim(Lavozim lavozim) {
-        this.lavozim = lavozim;
-    }
-
-    public Kafedra getKafedra() {
-        return kafedra;
-    }
-
-    public void setKafedra(Kafedra kafedra) {
-        this.kafedra = kafedra;
-    }
-
-    public String getMutaxasislik() {
-        return mutaxasislik;
-    }
-
-    public void setMutaxasislik(String mutaxasislik) {
-        this.mutaxasislik = mutaxasislik;
-    }
-
-    public String getIlmiyDaraja() {
-        return ilmiyDaraja;
-    }
-
-    public void setIlmiyDaraja(String ilmiyDaraja) {
-        this.ilmiyDaraja = ilmiyDaraja;
-    }
+    @Size(max = 60, min = 60)
+    @Column(nullable = false)
+    private String parol;
 }

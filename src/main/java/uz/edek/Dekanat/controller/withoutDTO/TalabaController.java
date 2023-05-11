@@ -7,7 +7,6 @@ import uz.edek.Dekanat.entity.Talaba;
 import uz.edek.Dekanat.service.withoutDto.CommonService;
 import uz.edek.Dekanat.service.withoutDto.TalabaService;
 
-@CrossOrigin(value = "*")
 @RestController
 @RequestMapping("/api/talaba")
 public class TalabaController extends AbstractController<Talaba>{

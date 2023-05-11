@@ -8,7 +8,6 @@ import uz.edek.Dekanat.service.withoutDto.MurojaatService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/murojaat")
 public class MurojaatController extends AbstractController<Murojaat>{
@@ -20,8 +19,12 @@ public class MurojaatController extends AbstractController<Murojaat>{
         super(service);
     }
 
-    @GetMapping("/getByTalabaId/{id}")
-    public List<Murojaat> getAllList(@PathVariable Long id){
+    @GetMapping("/getByTalaba/{id}")
+    public List<Murojaat> getAllByTalaba(@PathVariable Long id){
+        return murojaatService.getAllByTalabaId(id);
+    }
+    @GetMapping("/getByOqituvchi/{id}")
+    public List<Murojaat> getAllByOqituvchi(@PathVariable Long id){
         return murojaatService.getAllByTalabaId(id);
     }
 }

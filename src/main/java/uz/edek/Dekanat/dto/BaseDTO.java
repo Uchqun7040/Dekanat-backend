@@ -1,36 +1,20 @@
 package uz.edek.Dekanat.dto;
 
-import java.time.LocalDateTime;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+@Data
+@NoArgsConstructor
 public class BaseDTO {
+
     private Long id;
-    private LocalDateTime modified;
+
     private LocalDateTime created;
 
-    public BaseDTO() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
+    public BaseDTO(Long id, LocalDateTime created){
         this.id = id;
-    }
-
-    public LocalDateTime getModified() {
-        return modified;
-    }
-
-    public void setModified(LocalDateTime modified) {
-        this.modified = modified;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
+
 }

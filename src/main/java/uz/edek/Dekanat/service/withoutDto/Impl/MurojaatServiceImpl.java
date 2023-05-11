@@ -63,6 +63,11 @@ public class MurojaatServiceImpl extends AbstractService<Murojaat> implements Mu
         return murojaatRepository.findAllByTalabaIdOrderByIdDesc(talabaId);
     }
 
+    @Override
+    public List<Murojaat> getAllByOqituvchiId(Long oqituvchiId) {
+        return murojaatRepository.findAllByOqituvchiIdOrderByIdDesc(oqituvchiId);
+    }
+
     public String createPDF(Murojaat murojaat){
         String hashId = "";
         if(!Objects.equals(murojaat.getFayl(),"")){
@@ -123,12 +128,17 @@ public class MurojaatServiceImpl extends AbstractService<Murojaat> implements Mu
             Paragraph matn=new Paragraph(entity.getMatn());
             document.add(matn);
 
-            String created=entity.getCreated().toString();
-            String sanaT = created.substring(0,created.indexOf("T"));
-            String vaqtT = created.substring(created.indexOf("T")+1,created.indexOf("T")+6);
-            created = "Murojaat vaqti: "+sanaT+", "+vaqtT;
-            Paragraph vaqt=new Paragraph(created);
-            document.add(vaqt);
+            try{
+                String created=entity.getCreated().toString();
+                String sanaT = created.substring(0,created.indexOf("T"));
+                String vaqtT = created.substring(created.indexOf("T")+1,created.indexOf("T")+6);
+                created = "Murojaat vaqti: "+sanaT+", "+vaqtT;
+                Paragraph vaqt=new Paragraph(created);
+                document.add(vaqt);
+            }catch(Exception x){
+                System.out.println("Vaqt mavjud emasligi uchun, u qo'shilmadi!");
+            }
+
 
             int n=entity.getHolat().ordinal();
             String holatT = "Murojaat holati: ";
