@@ -9,6 +9,7 @@ import uz.edek.Dekanat.service.withoutDto.MurojaatService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 @RequestMapping("/api/murojaat")
 public class MurojaatController extends AbstractController<Murojaat>{
 
@@ -25,6 +26,6 @@ public class MurojaatController extends AbstractController<Murojaat>{
     }
     @GetMapping("/getByOqituvchi/{id}")
     public List<Murojaat> getAllByOqituvchi(@PathVariable Long id){
-        return murojaatService.getAllByTalabaId(id);
+        return murojaatService.getAllByOqituvchiId(id);
     }
 }

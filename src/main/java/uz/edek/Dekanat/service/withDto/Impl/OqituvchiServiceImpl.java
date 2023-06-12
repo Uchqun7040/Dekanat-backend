@@ -69,7 +69,9 @@ public class OqituvchiServiceImpl extends AbstractDTOService<Oqituvchi,Oqituvchi
 
     @Override
     public List<OqituvchiDTO> getAllDekan() {
-        List<Oqituvchi> dekanlar = oqituvchiRepository.findAllByLavozimInOrderByFamiliyaAsc(List.of(Lavozim.DEKAN));
+        Set<Lavozim> lavozims=new HashSet<>();
+        lavozims.add(Lavozim.DEKAN);
+        List<Oqituvchi> dekanlar = oqituvchiRepository.findAllByLavozimInOrderByFamiliyaAsc(lavozims);
         return oqituvchiConverter.convertList(dekanlar);
     }
 

@@ -83,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
@@ -92,6 +92,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         config.addAllowedOrigin("http://localhost:4200");
         config.addAllowedOrigin("https://e-dek.uz");
         config.addAllowedOrigin("http://e-dek.uz");
+        config.addAllowedOrigin("https://api.e-dek.uz");
+        config.addAllowedOrigin("http://api.e-dek.uz");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);

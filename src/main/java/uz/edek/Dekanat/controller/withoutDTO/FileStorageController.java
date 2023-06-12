@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 @RequestMapping("api/file")
 public class FileStorageController {
     @Value("${upload.folder}")

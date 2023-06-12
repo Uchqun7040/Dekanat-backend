@@ -19,6 +19,7 @@ import uz.edek.Dekanat.service.withDto.OqituvchiService;
 import uz.edek.Dekanat.vm.OqituvchiVM;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 @RequestMapping("api/account")
 public class AccountController {
     @Autowired

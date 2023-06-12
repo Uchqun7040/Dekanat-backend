@@ -8,6 +8,7 @@ import uz.edek.Dekanat.service.withoutDto.CommonService;
 import uz.edek.Dekanat.service.withoutDto.TalabaService;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 @RequestMapping("/api/talaba")
 public class TalabaController extends AbstractController<Talaba>{
     @Autowired
